@@ -1,0 +1,23 @@
+<div class="layout-container" [attr.data-theme]="isDarkMode() ? 'dark' : 'light'">
+
+  <button class="mobile-toggle" (click)="toggleMobileMenu()">
+    {{ isMobileMenuOpen() ? '✕' : '☰' }}
+  </button>
+
+  <div class="sidebar-overlay"
+       [class.active]="isMobileMenuOpen()"
+       (click)="closeMenuMobile()">
+  </div>
+
+  <app-sidebar
+    [isOpen]="isMobileMenuOpen()"
+    [isDark]="isDarkMode()"
+    (close)="closeMenuMobile()"
+    (toggleTheme)="toggleTheme()">
+  </app-sidebar>
+
+  <main class="main-content">
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+  </main>
+</div>

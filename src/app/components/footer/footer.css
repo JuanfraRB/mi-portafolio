@@ -1,0 +1,50 @@
+.main-footer {
+  background: var(--sidebar-bg);
+  color: var(--text-primary);
+  padding: 10px 20px; /* Reducción drástica del "aire" */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 20px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para que en móvil no se amontone */
+  gap: 10px;
+}
+
+/* Ocultamos los títulos h3 y h4 */
+.footer-section h3, .footer-section h4 {
+  display: none;
+}
+
+/* Los enlaces en horizontal */
+.footer-section ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section p, .footer-section a {
+  font-size: 0.8rem; /* Letra pequeña y elegante */
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+.footer-bottom {
+  border-top: none; /* Quitamos la línea de abajo */
+  padding-top: 0;
+  text-align: center;
+  width: 100%;
+}

@@ -1,0 +1,91 @@
+/* --- VARIABLES DE TEMA (Globales) --- */
+[data-theme='dark'] {
+  --bg-primary: #0f172a;
+  --text-primary: #ffffff;
+  --sidebar-bg: #1e293b;
+  --accent: #38bdf8;
+  --item-hover: rgba(255, 255, 255, 0.1);
+  --text-muted: #94a3b8;
+}
+
+[data-theme='light'] {
+  --bg-primary: #ffffff;
+  --text-primary: #1e293b;
+  --sidebar-bg: #f8fafc;
+  --accent: #2563eb;
+  --item-hover: rgba(0, 0, 0, 0.05);
+  --text-muted: #64748b;
+}
+
+/* --- LAYOUT GLOBAL --- */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* El margen inicial en PC es el ancho de la sidebar cerrada (70px) */
+  margin-left: 70px;
+  padding: 20px;
+  color: var(--text-primary);
+  transition: margin-left 0.3s ease-in-out;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1; /* Esto le dice: "ocupa todo el espacio que quede libre" */
+}
+
+/* Efecto para desplazar el contenido cuando la sidebar se expande en PC */
+app-sidebar:hover + .main-content {
+  margin-left: 240px;
+}
+
+/* --- ELEMENTOS DEL APP (Botón y Overlay) --- */
+.mobile-toggle {
+  display: none; /* Escondido en PC */
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 9998; /* Justo debajo de la sidebar que tendrá 9999 */
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* --- AJUSTES PARA MÓVIL (< 768px) --- */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important; /* En móvil el contenido ocupa todo el ancho */
+    padding-top: 80px; /* Espacio para que el botón flotante no tape el contenido */
+  }
+
+  .mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 10000; /* Siempre arriba de todo */
+    width: 48px;
+    height: 48px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}

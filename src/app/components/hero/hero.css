@@ -1,0 +1,184 @@
+.hero-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.name-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.name-title span {
+  color: var(--accent);
+}
+
+.role-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  max-width: 500px;
+  margin: 10px auto 20px auto;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.tag-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.hero-header-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap; /* Para que en móvil baje el texto */
+  justify-content: center;
+}
+
+.profile-pic-container {
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 240px;      /* Tamaño de la foto */
+  height: 240px;
+  border-radius: 50%; /* Foto circular */
+  object-fit: cover;  /* Para que no se deforme */
+  border: 5px solid var(--accent-color, #38bdf8); /* Un borde con tu color principal */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-pic:hover {
+  transform: scale(1.03) rotate(2deg); /* Un toque de rotación para que sea dinámico */
+  border-color: #fff; /* Cambia el color del borde al hacer hover */
+}
+
+.tag {
+  background: var(--item-hover);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid var(--accent);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.bio-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.bio-text p {
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.tech-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.tech-card {
+  background: var(--sidebar-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--accent);
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+}
+
+.tech-card h4 {
+  margin: 0.5rem 0;
+  color: var(--accent);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  justify-content: center;
+}
+
+/* Opcional: darle el color oficial de GitHub en hover */
+.github-btn:hover {
+  background-color: #24292e !important;
+  color: white !important;
+  border-color: #24292e !important;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+  .name-title {
+    font-size: 2.5rem;
+  }
+
+  .role-subtitle {
+    font-size: 1.2rem;
+    max-width: 90%;
+  }
+
+  .hero-header-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+}

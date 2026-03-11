@@ -1,0 +1,44 @@
+<div class="cv-container">
+  <header class="cv-header">
+    <h2>{{ profile.name }}</h2>
+    <p class="role-title">{{ profile.title }}</p>
+    <p class="description">{{ profile.description }}</p>
+  </header>
+
+  <div class="cv-content">
+    <div class="timeline">
+      <h3>Experiencia y Formación</h3>
+      @for (item of timeline; track item.title) {
+        <div class="timeline-item">
+          <span class="date">{{ item.date }}</span>
+          <h4>{{ item.title }}</h4>
+          <span class="place">{{ item.place }}</span>
+          <p>{{ item.description }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="skills-sidebar">
+      <h3>Habilidades Técnicas</h3>
+
+      <div class="skill-group">
+        <h4>Lenguajes</h4>
+        <ul>
+          <li>Java (Swing/JavaFX)</li>
+          <li>PHP & Python</li>
+          <li>PL/SQL (Oracle/MySQL/SQLite)</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h4>Tecnologías Web</h4>
+        <ul>
+          <li>Angular & Node.js</li>
+          <li>TypeScript & JavaScript</li>
+          <li>Ionic & Android</li>
+          <li>ERP Odoo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

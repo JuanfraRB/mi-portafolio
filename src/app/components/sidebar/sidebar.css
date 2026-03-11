@@ -1,0 +1,113 @@
+/* Estilos específicos de la barra lateral */
+.sidebar {
+  width: 70px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease;
+  overflow: hidden;
+  border-right: 1px solid rgba(128, 128, 128, 0.2);
+  z-index: 1000;
+}
+
+.sidebar:hover {
+   width: 240px;
+}
+
+.sidebar:not(:hover) .label {
+  display: none;
+}
+
+/* Enlaces del menú */
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 23px;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: var(--item-hover);
+}
+
+.sidebar-logo-img {
+  width: 32px;  /* Tamaño similar a los iconos */
+  height: 32px;
+  object-fit: contain;
+  margin-left: -4px; /* Ajuste fino de alineación */
+}
+
+/* EL ICONO: No se mueve */
+.icon {
+  min-width: 24px;
+  max-width: 24px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  text-align: center;
+}
+
+/* EL TEXTO: Aparece sin desplazar el icono */
+.label {
+  margin-left: 20px;
+  font-weight: 500;
+  opacity: 0; /* Por defecto invisibles en PC */
+  transition: opacity 0.2s ease;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Mostrar texto al hacer hover en PC */
+.sidebar:hover .label {
+  opacity: 1;
+}
+
+/* Link activo con color de acento */
+.active {
+  color: var(--accent);
+  background-color: var(--item-hover);
+  border-left: 4px solid var(--accent);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 260px !important;
+    transform: translateX(-100%); /* Fuera de la pantalla */
+    z-index: 9999;
+    /* Quitamos el hover de PC para que no haga cosas raras al tocar */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.mobile-active {
+    transform: translateX(0);
+  }
+
+  .label {
+    opacity: 1 !important; /* Siempre visible */
+    pointer-events: auto !important; /* Aseguramos que el texto sea "clicable" */
+    display: block !important;
+  }
+
+  /* Ajuste para los items en móvil */
+  .nav-item {
+    justify-content: flex-start !important;
+    height: 65px; /* Un poco más grandes para dedos */
+   padding-left: 30px;
+  }
+}

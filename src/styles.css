@@ -1,0 +1,34 @@
+/* Colores por defecto (Light Mode) */
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #1e293b;
+  --sidebar-bg: #f1f5f9;
+  --accent: #2563eb;
+  --card-bg: #ffffff;
+  --transition-speed: 0.3s;
+}
+
+/* --- CONTRASTE MODO OSCURO --- */
+[data-theme='dark'] {
+  --bg-primary: #0f172a;
+  --text-primary: #ffffff;      /* Blanco puro */
+  --sidebar-bg: #1e293b;
+  --accent: #38bdf8;
+  --item-hover: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='light'] {
+  --bg-primary: #ffffff;
+  --text-primary: #1e293b;
+  --sidebar-bg: #f8fafc;
+  --accent: #2563eb;
+  --item-hover: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  margin: 0;
+}
