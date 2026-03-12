@@ -7,7 +7,7 @@
 }
 
 .name-title {
-  font-size: 3.5rem;
+  font-size: 3.0rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -45,21 +45,54 @@
 
 .profile-pic-container {
   flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+  perspective: 1000px; /* Para el efecto 3D */
 }
 
 .profile-pic {
-  width: 240px;      /* Tamaño de la foto */
-  height: 240px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;      /* Tamaño de la foto */
+  height: 100%;
   border-radius: 50%; /* Foto circular */
   object-fit: cover;  /* Para que no se deforme */
   border: 5px solid var(--accent-color, #38bdf8); /* Un borde con tu color principal */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
+  backface-visibility: hidden; /* Para ocultar la cara trasera */
+  transition: border-color 0.3s ease,background-color 0.3s ease;
 }
 
-.profile-pic:hover {
-  transform: scale(1.03) rotate(2deg); /* Un toque de rotación para que sea dinámico */
-  border-color: #fff; /* Cambia el color del borde al hacer hover */
+/* Cara Frontal (Tu Foto) */
+.profile-pic.front {
+  object-fit: cover; /* Mantenemos cover para la foto*/
+}
+
+/* La imagen de marca empieza girada */
+.profile-pic.back {
+  transform: rotateY(180deg);
+  object-fit: contain; /* Para que el logo se vea completo */
+  padding: 20px; /* Un poco de espacio para el logo */
+  background: var(--sidebar-bg,white); /* Fondo por si la marca es transparente */
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+/* Efecto opcional de cambio de borde al pasar el ratón */
+.profile-pic-container:hover .profile-pic {
+  border-color: #fff;
+}
+
+.profile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.profile-pic-container:hover .profile-inner {
+  transform: rotateY(180deg);
 }
 
 .tag {
@@ -177,8 +210,12 @@
     gap: 20px;
   }
 
-  .profile-pic {
+  .profile-pic-container {
     width: 180px;
     height: 180px;
+  }
+
+  .profile-pic.back {
+    padding: 15px; /* Menos padding en móvil */
   }
 }
