@@ -72,64 +72,81 @@
   font-size: 0.8rem;
 }
 
-.repo-link {
+.repo-link, .btn-secondary {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+
+  /* Dimensiones y espaciado */
   margin-top: 1.5rem;
-  padding: 0.8rem 1.2rem;
-  background: linear-gradient(135deg, var(--accent), #505050);
-  background-color: var(--accent);
-  color: white; /* O el color de texto que prefieras */
-  text-decoration: none;
+  padding: 10px 20px;
+  width: auto;           /* Se ajusta al texto */
+  max-width: 100%;       /* ¡CRÍTICO! No deja que el botón sea más ancho que la tarjeta */
+  min-height: 45px;      /* Altura táctil cómoda para móviles */
+
+  /* Estética */
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--accent);
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  /* Preparación para el brillo */
   overflow: hidden;
+  box-sizing: border-box; /* Asegura que el padding no sume ancho extra */
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.repo-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
-  filter: brightness(1.1);
-}
-
-/* Efecto de Brillo (Glow/Shimmer) */
-.repo-link::before {
+/* Efecto Brillo (Shimmer) corregido */
+.repo-link::before, .btn-secondary::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
+  left: -150%; /* Empezamos más lejos */
+  width: 50%;  /* Brillo más fino */
   height: 100%;
   background: linear-gradient(
-    120deg,
+    90deg,
     transparent,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
-  transition: all 0.5s;
+  transform: skewX(-20deg); /* Inclinación para un look más moderno */
+  transition: none;
 }
 
-.repo-link:hover::before {
-  left: 100%;
+.repo-link:hover::before, .btn-secondary:hover::before {
+  left: 150%;
+  transition: all 0.6s ease;
 }
 
-.repo-link:active {
-  transform: translateY(-1px);
+/* Estado Hover */
+.repo-link:hover, .btn-secondary:hover {
+  background: var(--accent);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
 }
+
 /* Responsivo para móviles */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  .repo-link {
+  .repo-link, .btn-secondary {
     display: flex;
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .project-card {
+    padding: 1rem;
   }
 }
