@@ -3,7 +3,8 @@
   --bg-primary: #ffffff;
   --text-primary: #1e293b;
   --sidebar-bg: #f1f5f9;
-  --accent: #2563eb;
+  --accent: #007bff; /* Tu color actual */
+  --accent-rgb: 0, 123, 255; /* El mismo color pero en valores RGB */
   --card-bg: #ffffff;
   --transition-speed: 0.3s;
 }

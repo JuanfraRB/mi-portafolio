@@ -22,25 +22,41 @@ export class Projects implements OnInit {
     description: 'Colección de aplicaciones nativas enfocadas en la experiencia de usuario y rendimiento.',
     tech: ['Android', 'Java', 'ROOM'],
     icon: '📱',
-    type: 'Móvil'
+    type: 'Móvil',
+    repoUrl:'https://github.com/JuanfraRB/LinternaJFRB.git'
   },
   {
     title: 'Dev Portfolio',
     description: 'Web personal desarrollada con arquitectura modular, modo oscuro persistente y diseño responsivo.',
     tech: ['Angular', 'TypeScript', 'CSS3'],
     icon: '🌐',
-    type: 'Web'
+    type: 'Web',
+    repoUrl:'https://github.com/JuanfraRB/mi-portafolio.git'
   }
 ];
 
 constructor(private titleService: Title, private metaService: Meta) {}
 
   ngOnInit() {
-    this.titleService.setTitle('Proyectos | Juan Francisco Rodríguez');
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Explora mis proyectos de desarrollo de software: aplicaciones Android, sistemas en Java y bases de datos.'
-    });
+    const siteTitle = 'Proyectos | Juanfra Rodríguez';
+  const siteDescription = 'Explora mis proyectos de desarrollo de software: aplicaciones Android, sistemas en Java y bases de datos.';
+  const siteUrl = 'https://juanfrarb.netlify.app';
+  const siteImage = `${siteUrl}/assets/mi_logo.png`;
+
+  this.titleService.setTitle(siteTitle);
+
+  // Etiquetas estándar
+  this.metaService.updateTag({ name: 'description', content: siteDescription });
+
+  // Etiquetas Open Graph (WhatsApp, LinkedIn, Facebook)
+  this.metaService.updateTag({ property: 'og:title', content: siteTitle });
+  this.metaService.updateTag({ property: 'og:description', content: siteDescription });
+  this.metaService.updateTag({ property: 'og:url', content: siteUrl });
+  this.metaService.updateTag({ property: 'og:image', content: siteImage });
+  this.metaService.updateTag({ property: 'og:type', content: 'website' });
+
+  // Twitter Card
+  this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
   }
 
 }

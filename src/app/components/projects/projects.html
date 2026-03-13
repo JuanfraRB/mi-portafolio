@@ -14,6 +14,12 @@
               <span class="tech-tag">{{ t }}</span>
             }
           </div>
+         @if(project.repoUrl) {
+            <a href="{{ project.repoUrl }}" target="_blank"
+            class="repo-link">
+              Ver Código
+          </a>
+          }
         </div>
       </div>
     }
