@@ -218,8 +218,8 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  white-space: nowrap; /* Evita que el texto se parta en dos líneas */
-  width: auto;         /* Que el ancho lo mande el texto, no el 100% */
+  white-space: nowrap;
+  width: auto;
   background: transparent;
   color: var(--text-primary);
   border: 1px solid var(--accent);
@@ -228,7 +228,7 @@
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  background: var(--accent); /* Se llena de color al pasar el ratón */
+  background: var(--accent);
   color: white !important;
   box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
 }
@@ -241,7 +241,6 @@
   justify-content: center;
 }
 
-/* Opcional: darle el color oficial de GitHub en hover */
 .github-btn:hover {
   background-color: #24292e !important;
   color: white !important;
@@ -291,6 +290,6 @@
   }
 
   .profile-pic.back {
-    padding: 15px; /* Menos padding en móvil */
+    padding: 15px;
   }
 }
